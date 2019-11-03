@@ -1,9 +1,10 @@
-'use strict'
+
 
 const path = require('path')
 const paths = require('./paths')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
 const host = process.env.HOST || '0.0.0.0'
@@ -51,7 +52,8 @@ const defaultConf = env => {
               }
             : undefined
         )
-      )
+      ),
+      new CopyPlugin([{ from: paths.appPublic, to: paths.appBuild }])
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -98,7 +100,7 @@ module.exports = (env = {}) => {
       ...defaultConf(env),
       entry: path.resolve(__dirname, '../src/main'),
       output: {
-        path: path.resolve(__dirname, '../public'),
+        path: path.resolve(__dirname, '../build'),
         filename: 'main.js'
       },
       target: 'electron-main'
@@ -109,7 +111,7 @@ module.exports = (env = {}) => {
       ...defaultConf(env),
       entry: path.resolve(__dirname, '../src/renderer'),
       output: {
-        path: path.resolve(__dirname, '../public'),
+        path: path.resolve(__dirname, '../build'),
         filename: 'renderer.js'
       },
       target: 'web',

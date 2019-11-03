@@ -1,15 +1,21 @@
 {
-  "name": "electron-react-typescript-es6",
+  "name": "ring-launcher",
   "version": "0.1.0",
   "private": true,
-  "main": "public/main.js",
+  "main": "build/main.js",
   "scripts": {
-    "start": "NODE_ENV=production yarn build:main && electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "start": "yarn build:main && electron .",
     "start:inspect": "yarn build:main && electron --inspect=5858 .",
     "start:inspect-brk": "yarn build:main && electron --inspect-brk=5858 .",
     "dev:main": "NODE_ENV=development nodemon --watch src/main/* --exec 'yarn build:main && electron .'",
     "dev:renderer": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --hot --config config/webpack.config.js --config-name renderer",
-    "build:main": "webpack --config config/webpack.config.js --config-name main"
+    "build:main": "webpack --config config/webpack.config.js --config-name main",
+    "build:renderer": "webpack --config config/webpack.config.js --config-name renderer",
+    "build:main:prod": "yarn build:main --env production --define process.env.NODE_ENV='\"production\"'",
+    "build:renderer:prod": "yarn build:renderer --env production --define process.env.NODE_ENV='\"production\"'",
+    "build": "rm -rf ./build/ && concurrently 'yarn build:main:prod' 'yarn build:renderer:prod'",
+    "package": "yarn build && electron-builder build --publish never"
   },
   "dependencies": {
     "case-sensitive-paths-webpack-plugin": "2.2.0",
@@ -53,10 +59,13 @@
     "babel-loader": "8.0.6",
     "babel-plugin-named-asset-import": "^0.3.4",
     "babel-preset-react-app": "^9.0.2",
+    "concurrently": "^5.0.0",
+    "copy-webpack-plugin": "^5.0.4",
     "css-loader": "3.2.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "electron": "^7.0.1",
+    "electron-builder": "^22.1.0",
     "electron-debug": "^3.0.0",
     "electron-load-devtool": "^1.2.0",
     "electron-rebuild": "^1.8.6",
@@ -103,5 +112,18 @@
       "src/renderer/*"
     ],
     "delay": "2500"
+  },
+  "build": {
+    "appId": "com.t-skgm.ring-launcher",
+    "files": [
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "build/**/*",
+      "output": "releases"
+    },
+    "mac": {
+      "asar": false
+    }
   }
 }

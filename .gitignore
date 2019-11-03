@@ -12,8 +12,8 @@
 /coverage
 
 # production
-/public/*
-/build
+/build/*
+/releases/*
 
 # misc
 .DS_Store

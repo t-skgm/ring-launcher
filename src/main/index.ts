@@ -17,10 +17,15 @@ const windowOptions: BrowserWindowConstructorOptions = {
 const onReady = async () => {
   let win: BrowserWindow | null
   win = new BrowserWindow(windowOptions)
-  win.loadURL('http://localhost:8080')
 
-  // ChromiumのDevツールを開く
-  if (isDebug) win.webContents.openDevTools()
+  if (isDebug) {
+    win.loadURL('http://localhost:8080')
+    win.webContents.openDevTools()
+  } else {
+    // win.loadURL(`file://${__dirname}/index.html`);
+    // FIXME: path
+    win.loadFile('./build/index.html')
+  }
 
   win.on('closed', function() {
     win = null
