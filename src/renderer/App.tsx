@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { GlobalStyle } from 'styles/Index'
 
 const Container = styled.div`
-  max-width: 200px;
+  /* max-width: 200px; */
   height: 100%;
   width: 100%;
   margin: auto;
   display: flex;
   align-items: center;
-}
+  justify-content: center;
+  background-color: blue;
 `
 
 const Title = styled.h2`

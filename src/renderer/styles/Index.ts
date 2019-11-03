@@ -4,12 +4,12 @@ import colors from 'constants/colors'
 export const GlobalStyle = createGlobalStyle`
   html {
     font-family: monospace;
-    -webkit-app-region: drag
+    -webkit-app-region: drag;
+    background: rgba(0, 0, 0, 0);
     height: 100%;
     overflow: hidden;
   }
   body {
-    background-color: ${colors.backgroundColor};
     color: ${colors.textColor};
     height: 100%;
     overflow: hidden;
