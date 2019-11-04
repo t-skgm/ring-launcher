@@ -1,5 +1,4 @@
 import * as React from 'react'
-import * as _ from 'lodash'
 import styled from 'styled-components'
 import { ItemType, Direction } from '@/types'
 import constants from 'constants/index'
@@ -47,13 +46,10 @@ export const Ring: React.FC<Props> = ({ items, renderItem, pos, direction }) => 
           animationIterationCount: 1,
           animationDirection: 'normal',
           animationFillMode: 'forwards'
-        };
+        }
 
         return (
-          <ItemWrapper
-            key={item.id || item.label}
-            style={style}
-          >
+          <ItemWrapper key={item.id || item.label} style={style}>
             {renderItem(item, idx)}
           </ItemWrapper>
         )

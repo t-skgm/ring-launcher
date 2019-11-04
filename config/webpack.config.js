@@ -1,5 +1,3 @@
-
-
 const path = require('path')
 const paths = require('./paths')
 // const webpack = require('webpack')
@@ -63,7 +61,7 @@ const defaultConf = env => {
         renderer: path.resolve(__dirname, '../src/renderer'),
         components: path.resolve(__dirname, '../src/renderer/components'),
         styles: path.resolve(__dirname, '../src/renderer/styles'),
-        constants: path.resolve(__dirname, '../src/constants'),
+        constants: path.resolve(__dirname, '../src/constants')
       }
     },
     module: {
@@ -115,7 +113,7 @@ module.exports = (env = {}) => {
         path: path.resolve(__dirname, '../build'),
         filename: 'renderer.js'
       },
-      target: 'web',
+      target: 'web'
     }
   ]
 }

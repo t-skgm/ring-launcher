@@ -20,7 +20,8 @@
     "build:main:prod": "yarn build:main --env production --define process.env.NODE_ENV='\"production\"'",
     "build:renderer:prod": "yarn build:renderer --env production --define process.env.NODE_ENV='\"production\"'",
     "build": "rm -rf ./build/ && concurrently 'yarn build:main:prod' 'yarn build:renderer:prod'",
-    "package:mac": "yarn build && electron-builder build --mac --publish never"
+    "package:mac": "yarn build && electron-builder build --mac --publish never",
+    "lint": "eslint src/ --ext .ts,.tsx"
   },
   "dependencies": {
     "case-sensitive-paths-webpack-plugin": "2.2.0",
@@ -57,7 +58,7 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-transition-group": "^4.2.3",
     "@types/styled-components": "^4.1.20",
-    "@typescript-eslint/eslint-plugin": "2.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "2.6.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
@@ -76,11 +77,13 @@
     "electron-rebuild": "^1.8.6",
     "electron-reload": "^1.5.0",
     "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-loader": "3.0.2",
     "eslint-plugin-flowtype": "4.3.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "^2.2.0",
     "file-loader": "4.2.0",
@@ -92,22 +95,16 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "prettier": "^1.18.2",
     "sass-loader": "8.0.0",
     "style-loader": "1.0.0",
     "terser-webpack-plugin": "2.2.1",
     "ts-loader": "^6.2.1",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^4.1.0",
     "url-loader": "2.2.0",
     "webpack": "4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-manifest-plugin": "2.2.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "nodemonConfig": {
     "ignore": [
@@ -116,6 +113,6 @@
       "public/*",
       "src/renderer/*"
     ],
-    "delay": "2500"
+    "delay": "500"
   }
 }

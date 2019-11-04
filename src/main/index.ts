@@ -7,7 +7,7 @@ const windowOptions: BrowserWindowConstructorOptions = {
   width: constants.window.width,
   height: constants.window.height,
   transparent: true,
-  backgroundColor: "#00FFFFFF",
+  backgroundColor: '#00FFFFFF',
   frame: false,
   hasShadow: false,
   alwaysOnTop: true,
@@ -35,4 +35,6 @@ const onReady = async () => {
 }
 
 app.once('ready', onReady)
-app.on('window-all-closed', () => { app.quit() })
+app.on('window-all-closed', () => {
+  app.quit()
+})

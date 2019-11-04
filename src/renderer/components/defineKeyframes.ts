@@ -4,11 +4,11 @@ import { Direction } from '@/types'
 
 const { ring } = constants
 
-const calcX = (angle: number) => Math.round(ring.width / 2 + ring.radius * (Math.cos(angle)) - ring.itemSize / 2);
-const calcY = (angle: number) => Math.round(ring.height / 2 + ring.radius * (Math.sin(angle)) - ring.itemSize / 2);
+const calcX = (angle: number) => Math.round(ring.width / 2 + ring.radius * Math.cos(angle) - ring.itemSize / 2)
+const calcY = (angle: number) => Math.round(ring.height / 2 + ring.radius * Math.sin(angle) - ring.itemSize / 2)
 
-export const calcPoint = (pos: number, step: number, angleAdjust: number = 0) => {
-  const angle = pos * step - (Math.PI / 2) + angleAdjust
+export const calcPoint = (pos: number, step: number, angleAdjust = 0) => {
+  const angle = pos * step - Math.PI / 2 + angleAdjust
   return {
     top: calcY(angle),
     left: calcX(angle)
@@ -16,18 +16,18 @@ export const calcPoint = (pos: number, step: number, angleAdjust: number = 0) =>
 }
 
 const generateKeyframes = (step: number, itemIndex: number, itemCount: number): string[] => {
-  const curr = calcPoint(itemIndex + 1, step, - (Math.PI * 2 / itemCount))
-  const mid = calcPoint(itemIndex + 1, step, - (Math.PI / itemCount))
+  const curr = calcPoint(itemIndex + 1, step, -((Math.PI * 2) / itemCount))
+  const mid = calcPoint(itemIndex + 1, step, -(Math.PI / itemCount))
   const next = calcPoint(itemIndex + 1, step)
-  const currL = calcPoint(itemIndex, step, - (Math.PI * 2 / itemCount))
-  const midL = calcPoint(itemIndex, step, - (Math.PI / itemCount))
+  const currL = calcPoint(itemIndex, step, -((Math.PI * 2) / itemCount))
+  const midL = calcPoint(itemIndex, step, -(Math.PI / itemCount))
   const nextL = calcPoint(itemIndex, step)
 
   return _.flatMap(['right', 'left'], direction => {
     const animationName = `animation${itemIndex}${direction}`
     let keyframe: string
     if (direction === 'right') {
-      keyframe =`
+      keyframe = `
       @keyframes ${animationName} {
         0% {
           top: ${next.top}px;
@@ -43,7 +43,7 @@ const generateKeyframes = (step: number, itemIndex: number, itemCount: number): 
         }
       }`
     } else {
-      keyframe =`
+      keyframe = `
       @keyframes ${animationName} {
         0% {
           top: ${currL.top}px;
@@ -79,13 +79,13 @@ export const defineKeyframes = _.once((itemCount: number, step: number): void =>
   const styleSheet = styleSheetElm.sheet!
 
   // insert keyframes for `itemCount` times
-  Array.from({ length: itemCount }, (_v, idx) => {
+  Array.from({ length: itemCount }).forEach((_v, idx) => {
     const keyframes = generateKeyframes(step, idx, itemCount)
     insertRules(styleSheet, keyframes)
   })
 })
 
 export const generateAnimationName = (itemsCount: number, diff: number, direction: Direction) => {
-  const i = (diff < 0) ? itemsCount + diff : diff
+  const i = diff < 0 ? itemsCount + diff : diff
   return `animation${i}${direction}`
 }

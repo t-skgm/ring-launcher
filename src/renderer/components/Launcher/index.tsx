@@ -44,7 +44,7 @@ export const Launcher = () => {
   return (
     <>
       <LabelWrapper>
-        <Label>{ currentItem ? currentItem.label : '未選択' }</Label>
+        <Label>{currentItem ? currentItem.label : '未選択'}</Label>
       </LabelWrapper>
       <RingWrapper>
         <Cursor />
@@ -52,7 +52,7 @@ export const Launcher = () => {
           items={items}
           pos={pos}
           direction={direction}
-          renderItem={(item) => (
+          renderItem={item => (
             <Item>
               <Icon src={item.icon} />
             </Item>
