@@ -1,13 +1,13 @@
 export default {
   window: {
-    width: 600,
-    height: 600
+    width: 450,
+    height: 520
   },
   ring: {
-    width: 500,
-    height: 500,
-    radius: 200,
-    itemSize: 100
+    width: 450,
+    height: 450,
+    radius: 180,
+    itemSize: 80
   },
   key: {
     invert: false

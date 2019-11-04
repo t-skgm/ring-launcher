@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { GlobalStyle } from 'styles/Index'
+import { GlobalStyle } from 'components/GlobalStyle'
 import { Ring } from 'components/Ring'
 import { Item } from 'components/Item'
 import { ItemType } from '@/src/types'
@@ -13,14 +13,12 @@ const Container = styled.div`
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
   background: rgba(0, 0, 0, 0);
   flex-direction: column;
 `
 const LabelWrapper = styled.div`
   margin-bottom: 30px;
   padding: 8px 15px;
-  background-color: #fff;
   border: 2px solid #444;
   border-radius: 3px;
 `

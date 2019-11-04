@@ -1,10 +1,11 @@
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
+import constants from 'constants/index'
 
 const isDebug = process.env.NODE_ENV !== 'production'
 
 const windowOptions: BrowserWindowConstructorOptions = {
-  width: 600,
-  height: 600,
+  width: constants.window.width,
+  height: constants.window.height,
   transparent: true,
   frame: false,
   hasShadow: false,

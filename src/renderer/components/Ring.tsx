@@ -38,64 +38,60 @@ const calcPoint = (pos: number, step: number, angleAdjust: number = 0) => {
   }
 }
 
-const defineFrameNamesOnce = _.once((length: number): string[] => {
+const insertKeyframes = (stylesheet: StyleSheet, step: number, itemIndex: number): string[] => {
+  const curr = calcPoint(itemIndex + 1, step, - (Math.PI * 2 / length))
+  const mid = calcPoint(itemIndex + 1, step, - (Math.PI / length))
+  const next = calcPoint(itemIndex + 1, step)
+  const currL = calcPoint(itemIndex, step, - (Math.PI * 2 / length))
+  const midL = calcPoint(itemIndex, step, - (Math.PI / length))
+  const nextL = calcPoint(itemIndex, step)
+
+  return _.flatMap(['right', 'left'], direction => {
+    const animationName = `animation${itemIndex}${direction}`
+    const keyframesRight =
+    `@keyframes ${animationName} {
+      0% {
+        top: ${next.top}px;
+        left: ${next.left}px;
+      }
+      50% {
+        top: ${mid.top}px;
+        left: ${mid.left}px;
+      }
+      100% {
+        top: ${curr.top}px;
+        left: ${curr.left}px;
+      }
+    }`
+    const keyframesLeft =
+    `@keyframes ${animationName} {
+      0% {
+        top: ${currL.top}px;
+        left: ${currL.left}px;
+      }
+      50% {
+        top: ${midL.top}px;
+        left: ${midL.left}px;
+      }
+      100% {
+        top: ${nextL.top}px;
+        left: ${nextL.left}px;
+      }
+    }`
+    const keyframes = direction === 'right' ? keyframesRight : keyframesLeft
+    // @ts-ignore
+    stylesheet.insertRule(keyframes, 0)
+    return animationName
+  })
+}
+
+const defineKeyframesOnce = _.once((length: number, step: number): string[] => {
   const styleSheetElm = document.createElement('style');
   document.head.appendChild(styleSheetElm);
-  const styleSheet = styleSheetElm.sheet;
-
-  const insertKeyframes = (idx: number): string[] => {
-    const curr = calcPoint(idx + 1, step, - (Math.PI * 2 / length))
-    const mid = calcPoint(idx + 1, step, - (Math.PI / length))
-    const next = calcPoint(idx + 1, step)
-
-    const currL = calcPoint(idx, step, - (Math.PI * 2 / length))
-    const midL = calcPoint(idx, step, - (Math.PI / length))
-    const nextL = calcPoint(idx, step)
-
-    return _.flatMap(['right', 'left'], direction => {
-      const animationName = `animation${idx}${direction}`
-      const keyframesRight =
-      `@keyframes ${animationName} {
-        0% {
-          top: ${next.top}px;
-          left: ${next.left}px;
-        }
-        50% {
-          top: ${mid.top}px;
-          left: ${mid.left}px;
-        }
-        100% {
-          top: ${curr.top}px;
-          left: ${curr.left}px;
-        }
-      }`
-      const keyframesLeft =
-      `@keyframes ${animationName} {
-        0% {
-          top: ${currL.top}px;
-          left: ${currL.left}px;
-        }
-        50% {
-          top: ${midL.top}px;
-          left: ${midL.left}px;
-        }
-        100% {
-          top: ${nextL.top}px;
-          left: ${nextL.left}px;
-        }
-      }`
-      const keyframes = direction === 'right' ? keyframesRight : keyframesLeft
-      console.log('keyframes', keyframes)
-      // @ts-ignore
-      styleSheet.insertRule(keyframes, 0)
-      return animationName
-    })
-  }
-
-  const step = (Math.PI * 2) / length
+  const styleSheet = styleSheetElm.sheet!;
 
   const mapped = Array.from({ length }, (_v, idx) => {
-    const animationName = insertKeyframes(idx)
+    const animationName = insertKeyframes(styleSheet, step, idx)
     return animationName
   })
 
@@ -104,7 +100,7 @@ const defineFrameNamesOnce = _.once((length: number): string[] => {
 
 export const Ring: React.FC<Props> = ({ items, renderItem, pos, direction }) => {
   const step = (Math.PI * 2) / items.length
-  defineFrameNamesOnce(items.length)
+  defineKeyframesOnce(items.length, step)
 
   return (
     <Container>
