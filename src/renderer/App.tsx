@@ -21,6 +21,7 @@ const LabelWrapper = styled.div`
   padding: 8px 15px;
   border: 2px solid #444;
   border-radius: 3px;
+  background-color: #fff;
 `
 const Label = styled.span`
   color: #111;

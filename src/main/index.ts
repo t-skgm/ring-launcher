@@ -7,6 +7,7 @@ const windowOptions: BrowserWindowConstructorOptions = {
   width: constants.window.width,
   height: constants.window.height,
   transparent: true,
+  backgroundColor: "#00FFFFFF",
   frame: false,
   hasShadow: false,
   alwaysOnTop: true,

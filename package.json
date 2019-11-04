@@ -1,5 +1,9 @@
 {
   "name": "ring-launcher",
+  "description": "Ring launcher, inspired by SKLaunch",
+  "author": {
+    "name": "t-skgm"
+  },
   "version": "0.1.0",
   "private": true,
   "main": "build/main.js",
