@@ -19,6 +19,7 @@ const windowOptions: BrowserWindowConstructorOptions = {
 const onReady = async () => {
   let win: BrowserWindow | null
   win = new BrowserWindow(windowOptions)
+  // win.setIgnoreMouseEvents(true, { forward: true })
 
   if (isDebug) {
     win.loadURL('http://localhost:8080')

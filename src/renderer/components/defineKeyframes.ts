@@ -73,6 +73,7 @@ const insertRules = (stylesheet: StyleSheet, rules: string[]): void => {
 ///////////////////
 
 export const defineKeyframes = _.once((itemCount: number, step: number): void => {
+  console.log('[defineKeyframes]')
   // append new style elm
   const styleSheetElm = document.createElement('style')
   document.head.appendChild(styleSheetElm)

@@ -29,16 +29,19 @@ interface Props {
 
 export const Ring: React.FC<Props> = ({ items, renderItem, pos, direction }) => {
   const step = (Math.PI * 2) / items.length
-  defineKeyframes(items.length, step)
+
+  React.useMemo(() => {
+    defineKeyframes(items.length, step)
+  }, [items, step])
 
   return (
     <Container>
       {items.map((item, idx) => {
-        const curr = calcPoint(idx - pos, step)
+        const point = calcPoint(idx - pos, step)
         const animationName = generateAnimationName(items.length, idx - pos, direction)
 
         const style = {
-          ...curr,
+          ...point,
           animationName: animationName,
           animationTimingFunction: 'linear',
           animationDuration: '0.15s',
