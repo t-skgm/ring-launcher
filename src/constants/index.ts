@@ -10,6 +10,6 @@ export default {
     itemSize: 80
   },
   key: {
-    invert: false
+    invert: false // FIXME
   }
 }

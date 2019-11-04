@@ -31,12 +31,12 @@ export const useRingPosition = ({ length }: Props) => {
   React.useEffect(() => {
     Mousetrap.bind('right', (ev) => {
       console.log('right!')
-      setPos(rotate(key.invert ? -1 : 1))
+      setPos(rotate(1))
       setDirection('right')
     })
     Mousetrap.bind('left', (ev) => {
       console.log('left!')
-      setPos(rotate(key.invert ? 1 : -1))
+      setPos(rotate(-1))
       setDirection('left')
     })
     return () => {
