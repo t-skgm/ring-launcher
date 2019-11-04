@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as _ from 'lodash'
 import styled from 'styled-components'
-import { ItemType, Direction } from '@/src/types'
+import { ItemType, Direction } from '@/types'
 import constants from 'constants/index'
 import { calcPoint, defineKeyframes, generateAnimationName } from './defineKeyframes'
 

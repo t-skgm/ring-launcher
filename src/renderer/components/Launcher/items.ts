@@ -1,4 +1,4 @@
-import { ItemType } from '@/src/types'
+import { ItemType } from '@/types'
 import { images } from 'constants/images'
 
 export const items: ItemType[] = [

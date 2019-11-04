@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 import constants from 'constants/index'
-import { Direction } from '@/src/types'
+import { Direction } from '@/types'
 
 const { ring } = constants
 

@@ -58,6 +58,7 @@ const defaultConf = env => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
+        '@': path.resolve(__dirname, '../src'),
         main: path.resolve(__dirname, '../src/main'),
         renderer: path.resolve(__dirname, '../src/renderer'),
         components: path.resolve(__dirname, '../src/renderer/components'),
