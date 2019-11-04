@@ -8,6 +8,7 @@
     "start": "yarn build:main && electron .",
     "start:inspect": "yarn build:main && electron --inspect=5858 .",
     "start:inspect-brk": "yarn build:main && electron --inspect-brk=5858 .",
+    "dev": "concurrently 'yarn dev:main' 'yarn dev:renderer'",
     "dev:main": "NODE_ENV=development nodemon --watch src/main/* --exec 'yarn build:main && electron .'",
     "dev:renderer": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --hot --config config/webpack.config.js --config-name renderer",
     "build:main": "webpack --config config/webpack.config.js --config-name main",
@@ -15,7 +16,7 @@
     "build:main:prod": "yarn build:main --env production --define process.env.NODE_ENV='\"production\"'",
     "build:renderer:prod": "yarn build:renderer --env production --define process.env.NODE_ENV='\"production\"'",
     "build": "rm -rf ./build/ && concurrently 'yarn build:main:prod' 'yarn build:renderer:prod'",
-    "package": "yarn build && electron-builder build --publish never"
+    "package:mac": "yarn build && electron-builder build --mac --publish never"
   },
   "dependencies": {
     "case-sensitive-paths-webpack-plugin": "2.2.0",
@@ -112,18 +113,5 @@
       "src/renderer/*"
     ],
     "delay": "2500"
-  },
-  "build": {
-    "appId": "com.t-skgm.ring-launcher",
-    "files": [
-      "build/**/*"
-    ],
-    "directories": {
-      "buildResources": "build/**/*",
-      "output": "releases"
-    },
-    "mac": {
-      "asar": false
-    }
   }
 }

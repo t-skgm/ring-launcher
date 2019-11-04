@@ -1,0 +1,8 @@
+productName: "Ring Launcher"
+appId: "com.t-skgm.ring-launcher"
+files: ["build/**/*"]
+directories:
+  buildResources: "build/**/*"
+  output: "releases/${version}/"
+mac:
+  asar: false
