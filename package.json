@@ -50,7 +50,7 @@
     "@types/dompurify": "0.0.33",
     "@types/electron-load-devtool": "1.0.1",
     "@types/jest": "24.0.21",
-    "@types/lodash": "4.14.144",
+    "@types/lodash": "4.14.149",
     "@types/mousetrap": "1.6.3",
     "@types/nedb": "1.8.9",
     "@types/node": "12.12.5",
