@@ -46,7 +46,7 @@
     "@babel/core": "7.7.7",
     "@babel/preset-react": "7.7.4",
     "@svgr/webpack": "4.3.3",
-    "@types/codemirror": "0.0.79",
+    "@types/codemirror": "0.0.82",
     "@types/dompurify": "0.0.33",
     "@types/electron-load-devtool": "1.0.1",
     "@types/jest": "24.0.21",
