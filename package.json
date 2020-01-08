@@ -65,7 +65,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-named-asset-import": "0.3.4",
     "babel-preset-react-app": "9.0.2",
-    "concurrently": "5.0.0",
+    "concurrently": "5.0.2",
     "copy-webpack-plugin": "5.0.4",
     "css-loader": "3.2.0",
     "dotenv": "8.2.0",
