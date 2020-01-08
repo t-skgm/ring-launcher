@@ -78,7 +78,7 @@
     "electron-reload": "1.5.0",
     "eslint": "6.6.0",
     "eslint-config-prettier": "6.5.0",
-    "eslint-config-react-app": "5.0.2",
+    "eslint-config-react-app": "5.1.0",
     "eslint-loader": "3.0.2",
     "eslint-plugin-flowtype": "4.3.0",
     "eslint-plugin-import": "2.18.2",
