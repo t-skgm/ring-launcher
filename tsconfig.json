@@ -23,8 +23,7 @@
       "main/*": ["src/main/*"],
       "renderer/*": ["src/renderer/*"],
       "components/*": ["src/renderer/components/*"],
-      "styles/*": ["src/renderer/styles/*"],
-      "constants/*": ["src/constants/*"]
+      "styles/*": ["src/renderer/styles/*"]
     }
   },
   "include": [

@@ -1,8 +1,7 @@
 export type Direction = 'right' | 'left'
 
-export interface ItemType {
+export interface RingItem {
   id?: string
   label: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: any
+  icon: string
 }

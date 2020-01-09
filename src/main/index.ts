@@ -1,7 +1,6 @@
 import { app, BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
-import constants from 'constants/index'
-
-const isDebug = process.env.NODE_ENV !== 'production'
+import { constants } from '@/constants'
+import { isDebug } from '@/utils'
 
 const windowOptions: BrowserWindowConstructorOptions = {
   width: constants.window.width,
@@ -16,7 +15,7 @@ const windowOptions: BrowserWindowConstructorOptions = {
   titleBarStyle: 'customButtonsOnHover'
 }
 
-const onReady = async () => {
+app.once('ready', async () => {
   let win: BrowserWindow | null
   win = new BrowserWindow(windowOptions)
   // win.setIgnoreMouseEvents(true, { forward: true })
@@ -33,9 +32,8 @@ const onReady = async () => {
   win.on('closed', function() {
     win = null
   })
-}
+})
 
-app.once('ready', onReady)
 app.on('window-all-closed', () => {
   app.quit()
 })

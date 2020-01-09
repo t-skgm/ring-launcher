@@ -1,7 +1,7 @@
-import { ItemType } from '@/types'
-import { images } from 'constants/images'
+import { RingItem } from '@/types'
+import { images } from '@/constants'
 
-export const items: ItemType[] = [
+export const items: RingItem[] = [
   { id: '1', label: 'まんまるドロップ', icon: images.candy },
   { id: '2', label: '魔法のくるみ', icon: images.nut },
   { id: '3', label: 'ぱっくんチョコ', icon: images.choco },

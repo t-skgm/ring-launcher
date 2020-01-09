@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from 'components/GlobalStyle'
-import { Launcher } from 'components/Launcher'
+import { Launcher } from 'components/organisms'
 
 const Container = styled.div`
   height: 100%;

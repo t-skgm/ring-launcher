@@ -1,12 +1,13 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import { Ring } from 'components/Ring'
-import { Item } from 'components/Item'
-import { ItemType } from '@/types'
+import { RingItem } from '@/types'
+import { constants, images } from '@/constants'
+
+import { Ring } from 'components/molecules'
+import { Item } from 'components/atoms'
+
 import { useRingPosition } from './hooks'
 import { items } from './items'
-import constants from 'constants/index'
-import { images } from 'constants/images'
 
 const LabelWrapper = styled.div`
   margin-bottom: 30px;
@@ -37,9 +38,9 @@ const Icon = styled.img`
   height: 100%;
 `
 
-export const Launcher = () => {
+export const Launcher: React.SFC = () => {
   const [{ pos, direction }] = useRingPosition({ length: items.length })
-  const currentItem: ItemType | undefined = items[pos]
+  const currentItem: RingItem | undefined = items[pos]
 
   return (
     <>

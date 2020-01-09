@@ -21,7 +21,8 @@
     "build:renderer:prod": "yarn build:renderer --env production --define process.env.NODE_ENV='\"production\"'",
     "build": "rm -rf ./build/ && concurrently 'yarn build:main:prod' 'yarn build:renderer:prod'",
     "package:mac": "yarn build && electron-builder build --mac --publish never",
-    "lint": "eslint src/ --ext .ts,.tsx"
+    "lint": "eslint src/ --ext .ts,.tsx",
+    "typecheck": "tsc -p . --noEmit"
   },
   "dependencies": {
     "case-sensitive-paths-webpack-plugin": "2.2.0",
