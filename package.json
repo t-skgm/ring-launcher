@@ -25,7 +25,7 @@
     "typecheck": "tsc -p . --noEmit"
   },
   "dependencies": {
-    "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "case-sensitive-paths-webpack-plugin": "2.4.0",
     "fs-extra": "8.1.0",
     "identity-obj-proxy": "3.0.0",
     "lodash": "4.17.15",
